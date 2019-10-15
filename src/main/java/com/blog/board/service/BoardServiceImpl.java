@@ -21,7 +21,6 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> selectBoardList(BoardVO boardVO)
 	{
 		return this.boardDAO.selectBoardList(boardVO);
-		//return null;
 	}
 	
 	public List<Map<String,Object>> selectBoardTest01(Map<String,Object> paramMap)

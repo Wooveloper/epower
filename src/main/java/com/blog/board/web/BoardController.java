@@ -29,8 +29,6 @@ public class BoardController {
 			@ModelAttribute("boardVO") BoardVO boardVO,
 			@ModelAttribute("memberVO") MemberVO memberVO ) 
 	{
-		//model.addAttribute("BoardVO", boardVO);
-		//model.addAttribute("test","jsp test");
 		List<BoardVO> result = boardService.selectBoardList(boardVO);		
 		Map<String,Object> paramMap = new HashMap<String,Object>();
 		List<Map<String,Object>> listMap01 = boardService.selectBoardTest01(paramMap);
@@ -56,7 +54,6 @@ public class BoardController {
 		PagingVO pagingVO = new PagingVO((Integer)listMap.get(0).get("totalCount"), 1, 10, 10);
 		model.addAttribute("listMap222" , result);
 		model.addAttribute("listMap" , listMap);
-		//System.out.println((Integer)listMap.get(0).get("totalCount"));
 
 		return "blog/index";
 	}

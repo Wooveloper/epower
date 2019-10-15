@@ -26,7 +26,6 @@ public class BlogController {
 	public String selectBoardList(Model model,
 			@ModelAttribute("memberVO") MemberVO memberVO) 
 	{		
-	//	memberVO = memberService.selectBoardList(memberVO);
 		try {
 			if(memberVO.getMember_id() == null || memberVO.getMember_id() == ""){
 				return "blog/blogLogin";

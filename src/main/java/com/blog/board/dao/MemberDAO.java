@@ -38,7 +38,6 @@ public class MemberDAO {
 		System.out.println("***selectBoardList-DAO***");
 		//return selectList("BoardSql.selectBoardList");
 		//Map<String,Object> paramMap = new HashMap<String,Object>();
-		
 		//Test
 		//connection = getOracle();
 		//Test
