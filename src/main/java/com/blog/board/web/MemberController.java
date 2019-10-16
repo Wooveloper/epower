@@ -49,8 +49,18 @@ public class MemberController {
 	//로그인 백엔드
 	@RequestMapping(value="/selectLoginForm.do")
 	public String selectLoginForm(Model model, @ModelAttribute("memberVO") MemberVO memberVO) {
+		System.out.println(memberVO.getMember_id());
 		memberVO = memberService.selectLoginForm(memberVO);
-		return "redirect:/selectLoginView.do";
+		try {
+			if(memberVO.getMember_id() == null || memberVO.getMember_id() == ""){
+				return "member/login";
+			} else {
+				model.addAttribute("memberVO", memberVO);
+				return "member/SignUp";
+			}
+		} catch (Exception e) {
+			return "member/login";
+		}		
 	}
 	
 	//로그인 테스트-

@@ -19,7 +19,7 @@ public class BlogController {
 	@RequestMapping(value="/Main.do")
 	public String selectBlogLoginForm(Model model) 
 	{		
-		return "blog/index";		
+		return "blog/main";		
 	}
 	
 	@RequestMapping(value="/selectBlogLoginView.do")

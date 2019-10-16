@@ -20,6 +20,7 @@ public class MemberDAO {
 	public MemberVO selectLoginForm(MemberVO memberVO)
 	{				
 		return sqlSessionTemplate.selectOne("selectLoginForm", memberVO);
+		//return null;
 	}
 	
 	public MemberVO SelectIdCheck(MemberVO checkidVO)

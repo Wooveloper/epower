@@ -47,7 +47,7 @@
               </label>
             </div>
           </div>
-          <input type="submit" class="btn btn-primary form-control" id="btn_login" name="btn_login" value="Login" onclick="login()">
+          <input type="botton" class="btn btn-primary form-control" id="btn_login" name="btn_login" value="Login" onclick="login()">
         </form>
         <div class="text-center">
           <a class="d-block small mt-3" href="/SelectSignUpView.do">Register an Account</a>
@@ -70,7 +70,7 @@
 			alert("아이디를 입력해주세요!");
 			return;
 		} else {
-			location.href="/selectLoginView.do?"member_id="+$("#inputId").val()+"member_password="+$("#inputPassword").val();	
+			location.href="/selectLoginForm.do?member_id="+$("#inputId").val()+"&member_password="+$("#inputPassword").val();	
 		}
 	}
 </script>
