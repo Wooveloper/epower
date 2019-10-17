@@ -19,20 +19,11 @@ public class BoardDAO {
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	
-	public List<BoardVO> selectBoardList(BoardVO boardVO)
+	public List<Map<String,Object>> SelectBoardListForm(Map<String,Object> paramMap)
 	{
-		return sqlSessionTemplate.selectList("selectBoardList", boardVO);
+		return sqlSessionTemplate.selectList("SelectBoardListForm", paramMap);
 	}
 	
-	public List<Map<String,Object>> selectBoardTest01(Map<String,Object> paramMap)
-	{
-		return sqlSessionTemplate.selectList("selectBoardTest01", paramMap);
-	}
-	
-	public List<Map<String,Object>> selectBoardTest02(Map<String,Object> paramMap)
-	{
-		return sqlSessionTemplate.selectList("selectBoardTest02", paramMap);
-	}
 	
 	public void InsertBoardDeviceForm(DeviceVO deviceVO)
 	{				

@@ -24,7 +24,7 @@
 		<result property="totalCount" column="totalCount" javaType="int" />
 		<association property="BoardVO" javaType="BoardVO" autoMapping="true" />
 	</resultMap>
-	<select id="selectBoardTest02" parameterType="Map" resultMap="listMap">
+	<select id="SelectBoardListForm" parameterType="Map" resultMap="listMap">
 		SELECT * 
 		  FROM ( SELECT  BOARD_NO
                         ,BOARD_TITLE

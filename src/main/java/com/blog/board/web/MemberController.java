@@ -63,12 +63,6 @@ public class MemberController {
 		}		
 	}
 	
-	//로그인 테스트-
-	@RequestMapping(value="/selectLoginView2.do")
-	public String selectLoginView2(Model model) {
-		return "member/SignUp";		
-	}
-	
 	@ResponseBody
 	@RequestMapping	("/SelectIdCheck.do")
     public int SelectIdCheck(@ModelAttribute ("memberVO") MemberVO checkidVO) {

@@ -18,20 +18,13 @@ public class BoardServiceImpl implements BoardService {
 	@Resource(name="BoardDAO")
 	private BoardDAO boardDAO;
 	
-	public List<BoardVO> selectBoardList(BoardVO boardVO)
+
+	
+	public List<Map<String,Object>> SelectBoardListForm(Map<String,Object> paramMap)
 	{
-		return this.boardDAO.selectBoardList(boardVO);
+		return this.boardDAO.SelectBoardListForm(paramMap);
 	}
 	
-	public List<Map<String,Object>> selectBoardTest01(Map<String,Object> paramMap)
-	{
-		return this.boardDAO.selectBoardTest01(paramMap);
-	}
-	
-	public List<Map<String,Object>> selectBoardTest02(Map<String,Object> paramMap)
-	{
-		return this.boardDAO.selectBoardTest02(paramMap);
-	}
 	
 	public void InsertBoardDeviceForm(DeviceVO deviceVO)
 	{

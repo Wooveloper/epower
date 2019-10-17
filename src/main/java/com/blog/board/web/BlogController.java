@@ -16,12 +16,6 @@ public class BlogController {
 	@Resource(name="MemberService")
 	private MemberService memberService;
 	
-	@RequestMapping(value="/Main.do")
-	public String selectBlogLoginForm(Model model) 
-	{		
-		return "blog/main";		
-	}
-	
 	@RequestMapping(value="/selectBlogLoginView.do")
 	public String selectBoardList(Model model,
 			@ModelAttribute("memberVO") MemberVO memberVO) 
