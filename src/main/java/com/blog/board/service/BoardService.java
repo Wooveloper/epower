@@ -9,8 +9,13 @@ import com.blog.board.domain.MemberVO;
 
 public interface BoardService {
 	
-	public List<Map<String,Object>> SelectBoardListForm(Map<String,Object> paramMap);
+	public List<BoardVO> SelectBoardListForm(BoardVO boardVO);
+	
+	public List<Map<String,Object>> SelectBoardListForm2(Map<String,Object> paramMap);
 	
 	public void InsertBoardDeviceForm(DeviceVO diviceVO);
+	
+	public List<Map<String,Object>> SelectBoardDetailForm(Map<String,Object> paramMap);
+	
 	
 }

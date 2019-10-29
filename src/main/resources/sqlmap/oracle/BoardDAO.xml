@@ -19,13 +19,13 @@
 	</select>
 	
 
-	<resultMap type="Map" id="listMap">
+	<!-- <resultMap type="Map" id="listMap">
 		<result property="rn" column="rn" javaType="int" />
 		<result property="totalCount" column="totalCount" javaType="int" />
 		<association property="BoardVO" javaType="BoardVO" autoMapping="true" />
 	</resultMap>
-	<select id="SelectBoardListForm" parameterType="Map" resultMap="listMap">
-		SELECT * 
+	<select id="SelectBoardListForm2" parameterType="Map" resultMap="listMap">
+		SELECT *
 		  FROM ( SELECT  BOARD_NO
                         ,BOARD_TITLE
                         ,BOARD_CONTENT
@@ -36,28 +36,87 @@
                         ,BOARD_READ_COUNT
                         ,BOARD_STATUS
                         ,BOARD_TYPE
-                        ,ROW_NUMBER() OVER(ORDER BY BOARD_NO DESC) rn
+                        ,ROW_NUMBER() OVER(ORDER BY BOARD_NO DESC) rn 
                         ,COUNT(1) OVER() totalCount
                    FROM BOARD )
-              WHERE rn BETWEEN 1 AND 10
-	</select>
+		WHERE rn BETWEEN #{pagingVO.startRownum} AND #{pagingVO.endRownum}                   
+	</select> -->
+	
+	<resultMap type="Map" id="listMap">
+		<result property="rn" column="rn" javaType="int" />
+		<result property="totalCount" column="totalCount" javaType="int" />
+		<association property="DeviceVO" javaType="DeviceVO" autoMapping="true" />
+	</resultMap>
+	<select id="SelectBoardListForm2" parameterType="Map" resultMap="listMap">
+		SELECT *
+		  FROM ( SELECT  DEVICE_WHICH
+                        ,DEVICE_MODELNAME
+                        ,DEVICE_SPECIFICATION
+                        ,DEVICE_BUYDATE
+                        ,DEVICE_ETC
+                        ,DEVICE_MANAGER
+                        ,DEVICE_USER
+                        ,DEVICE_NO
+                        ,DEVICE_STATE
+                        ,ROW_NUMBER() OVER(ORDER BY DEVICE_NO DESC) rn 
+                        ,COUNT(1) OVER() totalCount
+                   FROM DEVICE )
+		WHERE rn BETWEEN #{pagingVO.startRownum} AND #{pagingVO.endRownum}                   
+	</select>	
+	
+	<resultMap type="Map" id="delistMap">
+		<association property="DeviceVO" javaType="DeviceVO" autoMapping="true" />
+	</resultMap>
+	<select id="SelectBoardDetailForm" parameterType="Map" resultMap="delistMap">
+		SELECT *
+		  FROM DEVICE
+		WHERE DEVICE_NO = #{deviceVO.device_no}
+	</select>	
 	
 	<insert id="InsertBoardDeviceForm" parameterType="DeviceVO">
-		INSERT INTO MEMBER (
-			MEMBER_ID
-			, MEMBER_PASSWORD
-			, MEMBER_NAME
-			, MEMBER_PHONE
-			, MEMBER_EMAIL
+		INSERT INTO DEVICE (
+			DEVICE_NO
+			, DEVICE_WHICH
+			, DEVICE_MODELNAME
+			, DEVICE_SPECIFICATION
+			, DEVICE_BUYDATE
+			, DEVICE_MANAGER
+			, DEVICE_USER
+			, DEVICE_STATE
+			, DEVICE_ETC
 			) VALUES (
-			#{member_id}
-			,#{member_password}
-			,#{member_name}
-			,#{member_phone}
-			,#{member_email}
+			#{device_no}
+			,#{device_which}
+			,#{device_modelname}
+			,#{device_specification}
+			,#{device_buydate}
+			,#{device_manager}
+			,#{device_user}
+			,#{device_state}
+			,#{device_etc}
 			)
 	</insert>
 	
-	
+	<!--   <resultMap type="Map" id="listMap">
+	 <association property="BoardVO" javaType="BoardVO" autoMapping="true" />
+	</resultMap>
+	<select id="SelectBoardDetailView" parameterType="Map" resultMap="listMap">
+		  <![CDATA[     
+		        IDX,
+                TITLE,
+                CONTENTS,
+                HIT_CNT,
+                CREA_ID,
+                IF(
+                    DATE_FORMAT(CREA_DATE, '%Y%m%d') < DATE_FORMAT(now(),'%Y%m%d'),
+                    DATE_FORMAT(CREA_DATE, '%Y.%m.%d'),
+                    DATE_FORMAT(CREA_DATE, '%H:%i')
+                ) as CREA_DATE
+            FROM
+                TB_BOARD
+            WHERE
+                IDX = #{ idx}
+  		]]>
+	</select>-->
 	
 </mapper>

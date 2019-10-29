@@ -43,14 +43,12 @@ public class BoardController {
 		Map<String,Object> paramMap = new HashMap<String,Object>();
 		PagingVO pagingVO = new PagingVO(totalCount, pageNo, 10, 10);
 		paramMap.put("pagingVO", pagingVO);
-		List<Map<String,Object>> listMap = boardService.SelectBoardListForm(paramMap);
+		List<Map<String,Object>> listMap = boardService.SelectBoardListForm2(paramMap);
 		pagingVO.setTotalCount((int)listMap.get(0).get("totalCount"));
-		model.addAttribute("pagingVO", pagingVO);
-		model.addAttribute("listMap" , listMap);	
+		model.addAttribute("listMap", listMap);
+		model.addAttribute("pagingVO" , pagingVO);	
 		return "blog/main";
 	}
-	
-	
 	
 	
 	//게시판등록 프론트 
@@ -72,7 +70,29 @@ public class BoardController {
 			System.out.println("test7 = " + deviceVO.device_state());
 			System.out.println("test8 = " + deviceVO.device_etc());
 			boardService.InsertBoardDeviceForm(deviceVO);
-		return null;
+		return "blog/main";
+	}
+	
+	
+	
+	@RequestMapping(value="/SelectBoardDetailView.do")
+	public String SelectBoardDetailView(Model model) {
+		return "board/boarddetail";		
+	}
+	
+	//시부랄거
+	@RequestMapping(value="/SelectBoardDetailForm.do")
+	public String SelectBoardDetailForm(Model model,@ModelAttribute("deviceVO") DeviceVO deviceVO){	
+	System.out.println("gajyom = " + deviceVO.device_no());
+	Map<String,Object> paramMap = new HashMap<String,Object>();
+	paramMap.put("deviceVO", deviceVO);
+	System.out.println("gagagagaga : " + paramMap);	
+	List<Map<String,Object>> listMap = boardService.SelectBoardDetailForm(paramMap);
+	//String o = listMap.get;
+	
+	model.addAttribute("listMap", listMap);
+	
+	return "board/boarddetail";
 	}
 
 }

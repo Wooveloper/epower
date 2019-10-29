@@ -19,15 +19,28 @@ public class BoardServiceImpl implements BoardService {
 	private BoardDAO boardDAO;
 	
 
-	
-	public List<Map<String,Object>> SelectBoardListForm(Map<String,Object> paramMap)
+	public List<BoardVO> SelectBoardListForm(BoardVO boardVO)
 	{
-		return this.boardDAO.SelectBoardListForm(paramMap);
+		return this.boardDAO.SelectBoardListForm(boardVO);
+		//return null;
 	}
 	
+	public List<Map<String,Object>> SelectBoardListForm2(Map<String,Object> paramMap)
+	{
+		return this.boardDAO.SelectBoardListForm2(paramMap);
+	}
+
 	
 	public void InsertBoardDeviceForm(DeviceVO deviceVO)
 	{
 		this.boardDAO.InsertBoardDeviceForm(deviceVO);
 	}
+	
+	public List<Map<String,Object>> SelectBoardDetailForm(Map<String,Object> paramMap)
+	{
+		return this.boardDAO.SelectBoardDetailForm(paramMap);
+	}
+
+
+
 }

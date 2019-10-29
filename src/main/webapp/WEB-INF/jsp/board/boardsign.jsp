@@ -61,12 +61,6 @@
 								</select>
 								<br>
                             	<div class="form-group">
-                            		<label>자산번호</label>
-                            		<input class="form-control" placeholder="자산번호" name="device_no" id="device_no" type="text" />
-                            		<input type="button" class="btn btn-default" style="width: 30%;" value="자산번호생성" onclick="nothing();" />
-                            	</div>
-								
-                            	<div class="form-group">
                             		<label>품목명</label>
                             		<input class="form-control" placeholder="품목명" name="device_modelname" id="device_modelname" type="text" />
                             	</div>
@@ -99,6 +93,9 @@
 									<label>비고</label>
 									<input class="form-control" placeholder="비고" name="device_etc" id="device_etc" type="text" />
 								</div>
+								<div class="form-group">
+                            		<input class="form-control" placeholder="자산번호" name="device_no" id="device_no" type="hidden" />
+                            	</div>
                             	<input type="button" class="btn btn-lg btn-success btn-block" value="회원가입" onclick="DosignUp();" />
                             </fieldset>
                         </form>

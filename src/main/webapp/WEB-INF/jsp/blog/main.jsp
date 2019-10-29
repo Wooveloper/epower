@@ -52,19 +52,23 @@
                 <table border="1" width="1200px">
  	<thead>
 		<tr>
-					<th style="test-align:center;">글 번호</th>
-					<th style="test-align:center;">제목</th>
-					<th style="test-align:center;">작성자</th>
-					<th style="test-align:center;">작성일</th>
-					<th style="test-align:center;">조회수</th>
+					<th style="test-align:center;">자산종류</th>
+					<th style="test-align:center;">품목명</th>
+					<th style="test-align:center;">제품사양</th>
+					<th style="test-align:center;">구매일</th>
+					<th style="test-align:center;">사용자</th>
+					<th style="test-align:center;">자산상태</th>
+					<th style="test-align:center;">PK넘버</th>
 				</tr>			
 				 <c:forEach items="${listMap}" var="result" varStatus="status">
                   	<tr>
-                    	<td>${result.BoardVO.board_no}</td>
-                    	<td>${result.BoardVO.board_title}</td>
-                    	<td>${result.BoardVO.board_regist_id}</td>
-                    	<td>${result.BoardVO.board_regist_date}</td>
-                    	<td>0</td>                   
+                    	<td>${result.DeviceVO.device_which}</td>
+                    	<td><a href="/SelectBoardDetailForm.do?device_no=${result.DeviceVO.device_no}">${result.DeviceVO.device_modelname}</a></td>
+                    	<td>${result.DeviceVO.device_specification}</td>
+                    	<td>${result.DeviceVO.device_buydate}</td>
+                    	<td>${result.DeviceVO.device_user}</td>
+                    	<td>${result.DeviceVO.device_state}</td>  
+                    	<td>${result.DeviceVO.device_no}</td>           
                   	</tr>	
                   </c:forEach>
 		</table>
@@ -97,12 +101,30 @@
 			</ul>
 		</div>		       
 	</div>		
+	
+	
+</body>
+
+
 <script type="text/javascript">
 function paging(pageNo) {
 	location.href="/SelectBoardListForm.do?pageNo="+pageNo;		
 }
-</script>
+
+<!-- function sendno() {
 	
-</body>
+	var device_no = $("#${result.DeviceVO.device_no}").val();
+	
+	   location.href="/SelectBoardDetailForm.do?device_no="+$("#${result.DeviceVO.device_no}").val();
+	   }
+	   
+function sendno1() {
+	
+	   var device_no = $("#${result.DeviceVO.device_no}").val();	
+	
+	   console.log("console : " ${result.DeviceVO.device_no});
+	   console.log("console1 : " device_no);
+	   }-->
+</script>
 
 </html>

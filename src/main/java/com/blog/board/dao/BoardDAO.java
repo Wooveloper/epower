@@ -19,15 +19,34 @@ public class BoardDAO {
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	
-	public List<Map<String,Object>> SelectBoardListForm(Map<String,Object> paramMap)
+	public List<BoardVO> SelectBoardListForm(BoardVO boardVO)
 	{
-		return sqlSessionTemplate.selectList("SelectBoardListForm", paramMap);
+		return sqlSessionTemplate.selectList("SelectBoardListForm", boardVO);
 	}
 	
+	public List<Map<String,Object>> SelectBoardListForm2(Map<String,Object> paramMap)
+	{
+		return sqlSessionTemplate.selectList("SelectBoardListForm2", paramMap);
+	}
 	
 	public void InsertBoardDeviceForm(DeviceVO deviceVO)
 	{				
-		//sqlSessionTemplate.insert("InsertBoardDeviceForm", deviceVO);
+		System.out.println("DAOtest1 = " + deviceVO.device_which());
+		System.out.println("DAOtest2 = " + deviceVO.device_no());
+		System.out.println("DAOtest3 = " + deviceVO.device_modelname());
+		System.out.println("DAOtest4 = " + deviceVO.device_specification());
+		System.out.println("DAOtest5 = " + deviceVO.device_buydate());
+		System.out.println("DAOtest6 = " + deviceVO.device_manager());
+		System.out.println("DAOtest6 = " + deviceVO.device_user());			
+		System.out.println("DAOtest7 = " + deviceVO.device_state());
+		System.out.println("DAOtest8 = " + deviceVO.device_etc());
+		sqlSessionTemplate.insert("InsertBoardDeviceForm", deviceVO);
+	}
+	
+	public List<Map<String,Object>> SelectBoardDetailForm(Map<String,Object> paramMap)
+	{
+		System.out.println("dao : " + paramMap);
+		return sqlSessionTemplate.selectList("SelectBoardDetailForm", paramMap);
 	}
 	
 }
