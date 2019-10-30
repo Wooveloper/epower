@@ -17,5 +17,7 @@ public interface BoardService {
 	
 	public List<Map<String,Object>> SelectBoardDetailForm(Map<String,Object> paramMap);
 	
+	public List<Map<String,Object>> UpdateDetailForm(Map<String,Object> paramMap);
+	
 	
 }

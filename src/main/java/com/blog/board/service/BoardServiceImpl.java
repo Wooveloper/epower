@@ -41,6 +41,9 @@ public class BoardServiceImpl implements BoardService {
 		return this.boardDAO.SelectBoardDetailForm(paramMap);
 	}
 
-
+	public List<Map<String,Object>> UpdateDetailForm(Map<String,Object> paramMap)
+	{
+		return this.boardDAO.UpdateDetailForm(paramMap);
+	}
 
 }

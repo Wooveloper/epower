@@ -6,10 +6,34 @@
 
  <%@include file="../../jsp/member/head.jsp" %>
  <%@include file="../../jsp/member/plugin_js.jsp" %>
- <script
+ <script>
   src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
   integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
-  crossorigin="anonymous"></script>
+  crossorigin="anonymous"
+ </script>
+ <script>
+ // 폼을 변수에 저장
+ var formObj = $("form[role='form']");
+ 
+ // 수정 버튼 클릭
+ $("#modity_btn").click(function(){
+  
+  formObj.attr("action", "/board/modify");
+  formObj.attr("method", "get");  
+  formObj.submit();     
+  
+ });
+ 
+ 
+ // 삭제 버튼 클릭
+ $("#delete_btn").click(function(){
+  
+  formObj.attr("action", "/board/delete");
+  formObj.attr("method", "get");  
+  formObj.submit();
+  
+ });
+ </script>
   <body>
 
     <div class="container">
@@ -55,7 +79,16 @@
 									<label>비고</label>
 									<input class="form-control" value="${result.DeviceVO.device_etc}" type="text" readonly />
 								</div>
+								<div class="form-group">
+									<label>PK값</label>
+									<input class="form-control" value="${result.DeviceVO.device_no}" type="text" readonly />
 								</div>
+								</div>
+								<p>
+								 <button id="back_btn">목록으로</button>
+								 <button><a href="/SelectDetailForm.do?device_no=${result.DeviceVO.device_no}">수정</a></button>
+								 <button id="delete_btn">삭제</button>
+								</p>
 								</c:forEach>
                             </fieldset>
                         </form>

@@ -55,9 +55,9 @@
                             <fieldset>
                             <label>자산종류</label>
                             	<select class="form-control" id="device_which" name="device_which" />
-									<option value="moniter" selected>모니터</option>
-									<option value="desktop" >데스크탑</option>
-									<option value="notebook" >노트북</option>
+									<option value="모니터" selected>모니터</option>
+									<option value="데스크탑" >데스크탑</option>
+									<option value="노트북" >노트북</option>
 								</select>
 								<br>
                             	<div class="form-group">
@@ -82,11 +82,11 @@
                             	</div>
                             	 <label>자산상태</label>
                             	<select class="form-control" id="device_state" name="device_state" />
-									<option value="main" selected>주장비</option>
-									<option value="rent">대여</option>
-									<option value="stock">재고</option>									
-									<option value="fixed">수리중</option>
-									<option value="broken">불용 </option>
+									<option value="주장비" selected>주장비</option>
+									<option value="대여">대여</option>
+									<option value="재고">재고</option>									
+									<option value="수리중">수리중</option>
+									<option value="불용">불용 </option>
 								</select>
 								<br>
                             	<div class="form-group">

@@ -49,4 +49,11 @@ public class BoardDAO {
 		return sqlSessionTemplate.selectList("SelectBoardDetailForm", paramMap);
 	}
 	
+	public List<Map<String,Object>> UpdateDetailForm(Map<String,Object> paramMap)
+	{
+		//System.out.println("dao : " + paramMap);
+		return sqlSessionTemplate.selectList("UpdateDetailForm", paramMap);
+		//return null;
+	}
+	
 }

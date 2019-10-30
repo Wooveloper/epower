@@ -96,6 +96,20 @@
 			,#{device_etc}
 			)
 	</insert>
+		
+
+	<update id="UpdateDetailForm" parameterType="Map">
+		UPDATE DEVICE
+		   SET DEVICE_WHICH = #{deviceVO.device_which},
+			   DEVICE_MODELNAME = #{deviceVO.device_modelname},
+			   DEVICE_SPECIFICATION = #{deviceVO.device_specification},
+			   DEVICE_BUYDATE = #{deviceVO.device_buydate},
+		       DEVICE_MANAGER = #{deviceVO.device_manager},
+			   DEVICE_USER = #{deviceVO.device_user},
+			   DEVICE_STATE = #{deviceVO.device_state},
+			   DEVICE_ETC = #{deviceVO.device_etc}
+		WHERE DEVICE_NO = #{deviceVO.device_no}
+	</update>	
 	
 	<!--   <resultMap type="Map" id="listMap">
 	 <association property="BoardVO" javaType="BoardVO" autoMapping="true" />

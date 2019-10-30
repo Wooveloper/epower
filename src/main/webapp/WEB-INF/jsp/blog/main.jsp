@@ -111,20 +111,6 @@ function paging(pageNo) {
 	location.href="/SelectBoardListForm.do?pageNo="+pageNo;		
 }
 
-<!-- function sendno() {
-	
-	var device_no = $("#${result.DeviceVO.device_no}").val();
-	
-	   location.href="/SelectBoardDetailForm.do?device_no="+$("#${result.DeviceVO.device_no}").val();
-	   }
-	   
-function sendno1() {
-	
-	   var device_no = $("#${result.DeviceVO.device_no}").val();	
-	
-	   console.log("console : " ${result.DeviceVO.device_no});
-	   console.log("console1 : " device_no);
-	   }-->
 </script>
 
 </html>

@@ -59,6 +59,7 @@
 		var member_email = $("#member_email").val();
 	    var checkNumber = member_password.search(/[0-9]/g);
 	    var checkEnglish = member_password.search(/[a-z]/ig);
+		var passRule = /^[A-Za-z0-9]{6,12}$/;//숫자와 문자 포함 형태의 6~12자리 이내의 암호 정규식
 		
 		if(member_id.length == 0) { alert("아이디를 입력해 주세요."); $("#member_id").focus(); return; }
 		if(member_id == 0) { alert("아이디 중복 체크를 해주세요."); $("#member_id").focus(); return; }
@@ -88,13 +89,12 @@
 		//			"&member_phone="+$("#signUpUserTelNo").val()+
 		//			"&member_email="+$("#signUpUserEmail").val();-->
 			
-	
-			
-			if(!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/(/\s|　/gi, '')){            
-			    alert('숫자+영문자+특수문자 조합으로 8자리 이상 사용해야 합니다.');
-			    $('#member_password').val('').focus();
-			    return false;
-			}    
+ 
+			if(!passRule.test($('#member_password').val())) {
+			alert("숫자와 문자 포함 형태의 6~12자리 이내의 암호여야 합니다.");
+ 			   return false;
+			}
+
 			if(checkNumber <0 || checkEnglish <0){
 			    alert("숫자와 영문자를 혼용하여야 합니다.");
 			    $('#member_password').val('').focus();
@@ -146,7 +146,7 @@
                             	</div>
                             	<div class="form-group">
                             		<label>이름</label>
-                            		<input class="form-control" placeholder="회사명" name="member_name" id="member_name" type="text" />
+                            		<input class="form-control" placeholder="이름" name="member_name" id="member_name" type="text" />
                             	</div>
                             	<div class="form-group">
                             		<label>전화번호</label>
