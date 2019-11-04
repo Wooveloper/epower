@@ -11,29 +11,6 @@
   integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
   crossorigin="anonymous"
  </script>
- <script>
- // 폼을 변수에 저장
- var formObj = $("form[role='form']");
- 
- // 수정 버튼 클릭
- $("#modity_btn").click(function(){
-  
-  formObj.attr("action", "/board/modify");
-  formObj.attr("method", "get");  
-  formObj.submit();     
-  
- });
- 
- 
- // 삭제 버튼 클릭
- $("#delete_btn").click(function(){
-  
-  formObj.attr("action", "/board/delete");
-  formObj.attr("method", "get");  
-  formObj.submit();
-  
- });
- </script>
   <body>
 
     <div class="container">
@@ -44,7 +21,7 @@
                         <h3 class="panel-title">조회  Device register</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" action=SelectBoardDetailForm.do method="post">
+                        <form role="form" method="post" name="form">
                         <!-- <form role="form"> -->
                             <fieldset>
                             <c:forEach items="${listMap}" var="result" varStatus="status">
@@ -78,17 +55,13 @@
                             	<div class="form-group">
 									<label>비고</label>
 									<input class="form-control" value="${result.DeviceVO.device_etc}" type="text" readonly />
+									<input type="hidden" value="${result.DeviceVO.device_no}"  />
 								</div>
-								<div class="form-group">
-									<label>PK값</label>
-									<input class="form-control" value="${result.DeviceVO.device_no}" type="text" readonly />
+								<div>
 								</div>
-								</div>
-								<p>
-								 <button id="back_btn">목록으로</button>
-								 <button><a href="/SelectDetailForm.do?device_no=${result.DeviceVO.device_no}">수정</a></button>
-								 <button id="delete_btn">삭제</button>
-								</p>
+								<input type="submit" value="목록으로" onclick="javascript: form.action='/SelectBoardListForm.do';"/>
+								<input type="submit" value="수정" onclick="javascript: form.action='/SelectDetailForm.do?device_no=${result.DeviceVO.device_no}';"/>
+								
 								</c:forEach>
                             </fieldset>
                         </form>

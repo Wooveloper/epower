@@ -45,5 +45,9 @@ public class BoardServiceImpl implements BoardService {
 	{
 		return this.boardDAO.UpdateDetailForm(paramMap);
 	}
-
+	
+	public List<Map<String,Object>> DeleteDetailForm(Map<String,Object> paramMap)
+	{
+		return this.boardDAO.DeleteDetailForm(paramMap);
+	}
 }

@@ -48,6 +48,33 @@ public class MemberController {
 	   
 	//로그인 백엔드
 	@RequestMapping(value="/selectLoginForm.do")
+	public String selectLoginForm(Model model, @ModelAttribute("memberVO") MemberVO memberVO,
+		@ModelAttribute("memberPVO") MemberVO memberPVO) {
+		System.out.println("vo1 : " +memberVO.getMember_id());
+		System.out.println("vo1 : " +memberVO.getMember_password());
+		System.out.println("pvo1 : " +memberPVO.getMember_id());
+		System.out.println("pvo1 : " +memberPVO.getMember_password());
+		memberPVO = memberService.selectLoginPasswordForm(memberPVO);
+		memberVO = memberService.selectLoginForm(memberVO);
+		try {if(memberVO.getMember_id() == null || memberVO.getMember_id() == ""){
+				return "member/login";
+			}else {
+				return "redirect:/Main.do";}
+			}catch (Exception e) {
+				return "member/login";}
+	}
+			
+		//System.out.println("vo2 : " +memberVO.getMember_id());
+		//System.out.println("vo2 : " +memberVO.getMember_id());
+		//System.out.println("Pvo2 : " +memberPVO.getMember_password());
+		//System.out.println("Pvo2 : " +memberPVO.getMember_password());
+		//model.addAttribute("memberPVO", memberPVO);
+
+	
+	/*
+	
+ 	//로그인 백엔드
+	@RequestMapping(value="/selectLoginForm.do")
 	public String selectLoginForm(Model model, @ModelAttribute("memberVO") MemberVO memberVO) {
 		System.out.println(memberVO.getMember_id());
 		memberVO = memberService.selectLoginForm(memberVO);
@@ -56,13 +83,14 @@ public class MemberController {
 				return "member/login";
 			} else {
 				model.addAttribute("memberVO", memberVO);
-				return "member/SignUp";
+				return "redirect:/Main.do";
 			}
 		} catch (Exception e) {
 			return "member/login";
 		}		
-	}
+	}*/	
 	
+	//중복검사
 	@ResponseBody
 	@RequestMapping	("/SelectIdCheck.do")
     public int SelectIdCheck(@ModelAttribute ("memberVO") MemberVO checkidVO) {
@@ -78,5 +106,17 @@ public class MemberController {
        // System.out.println("count : " + count);
         return count;
     }
+	
+	@RequestMapping(value="/selectLoginPasswordForm.do")
+	public String selectLoginPasswordForm(Model model, @ModelAttribute("memberVO") MemberVO memberVO) {
+		memberVO.setMember_id("kyle.w.lee");
+		//System.out.println(memberVO.getMember_id());
+		memberVO = memberService.selectLoginPasswordForm(memberVO);
+		//System.out.println("gaddaom : " + memberVO.getMember_password());
+		model.addAttribute("memberVO", memberVO);
+		return "member/login";
+		
+	}
+	
 }
 	

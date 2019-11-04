@@ -72,34 +72,17 @@
 		if(member_phone.length == 0) { alert("전화번호를 입력해 주세요."); $("#member_phone").focus(); return; }
 		
 		if(member_email.length == 0) { alert("이메일을 입력해 주세요."); $("#member_email").focus(); return; }
-		
-		//if(inputCpnNo.length == 0) { alert("사업자번호를 입력해 주세요."); $("#signUpUserCompanyNo").focus(); return; }
-		
-		//if(inputCpnAddr1.length == 0 || inputCpnAddr2.length == 0 || inputCpnAddr3.length == 0) { 
-		//	alert("주소를 입력해 주세요."); $("#signUpUserCompanyAddressDetail").focus();  return;
-		//}
+		 
+		if(!passRule.test($('#member_password').val())) {
+		alert("숫자와 문자 포함 형태의 6~12자리 이내의 암호여야 합니다.");
+			   return false;
+		}
 
-		//	if(confirm("회원가입을 하시겠습니까?")) {
-		//	alert("가입!");
-			
-		//	location.href="/InsertSignUpForm.do?
-		//			member_id="+$("#signUpUserId").val()+
-		//			"&member_password="+$("#signUpUserPwd").val()+
-		//			"&member_name="+$("#signUpUserCompanyName").val()+
-		//			"&member_phone="+$("#signUpUserTelNo").val()+
-		//			"&member_email="+$("#signUpUserEmail").val();-->
-			
- 
-			if(!passRule.test($('#member_password').val())) {
-			alert("숫자와 문자 포함 형태의 6~12자리 이내의 암호여야 합니다.");
- 			   return false;
-			}
-
-			if(checkNumber <0 || checkEnglish <0){
-			    alert("숫자와 영문자를 혼용하여야 합니다.");
-			    $('#member_password').val('').focus();
-			    return false;
-			}
+		if(checkNumber <0 || checkEnglish <0){
+		    alert("숫자와 영문자를 혼용하여야 합니다.");
+		    $('#member_password').val('').focus();
+		    return false;
+		}
 		
 		if(confirm("회원가입을 하시겠습니까?")){
 	        if(isCheckId == 0){

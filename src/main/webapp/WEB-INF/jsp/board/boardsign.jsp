@@ -24,7 +24,15 @@
 		var device_user = $("#device_user").val();
 		var device_stats = $("#device_stats option:selected").val();
 		var device_etc = $("#device_etc").val();
+	
+		var buydate = /^(19[0-9][0-9]|20\d{2})-(0[0-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
 		
+		if(device_modelname.length == 0){alert("품목명을 기재해주세요."); $("#device_modelname").focus(); return;}
+		if(!buydate.test($("#device_buydate").val())){
+			alert("구매일을 2020-월-일 형식으로 기재해주세요.");$ ("#device_buydate").focus(); return false;
+		}
+
+
 		
 	   	location.href="/InsertBoardDeviceForm.do?device_which="+$("#device_which").val()+
 			"&device_no="+$("#device_no").val()+

@@ -28,6 +28,7 @@ public class MemberDAO {
 		return sqlSessionTemplate.selectOne("SelectIdCheck", checkidVO);
 	}
 	
+	
 	public void InsertSignUpForm(MemberVO signVO)
 	{				
 		sqlSessionTemplate.insert("InsertSignUpForm", signVO);
@@ -51,5 +52,13 @@ public class MemberDAO {
 	{			
 		System.out.println("aaass");
 		sqlSessionTemplate.selectOne("selectLoginView_TEST");
+	}
+	
+	public MemberVO selectLoginPasswordForm(MemberVO memberPVO)
+	{				
+
+		return sqlSessionTemplate.selectOne("selectLoginPasswordForm", memberPVO);
+		
+		//return null;
 	}
 }

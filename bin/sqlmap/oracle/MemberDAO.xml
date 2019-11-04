@@ -9,6 +9,12 @@
 		   AND MEMBER_PASSWORD = #{member_password}
 	</select>
 	
+	<select id="selectLoginPasswordForm" parameterType="MemberVO" resultType="MemberVO">
+		SELECT *
+		  FROM MEMBER
+		 WHERE MEMBER_ID = #{member_id}
+	</select>
+	
 	<select id="SelectIdCheck" parameterType="MemberVO" resultType="MemberVO">
 		SELECT *
 		  FROM MEMBER
@@ -30,5 +36,7 @@
 			,#{member_email}
 			)
 	</insert>
+	
+
 
 </mapper>

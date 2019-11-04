@@ -32,5 +32,10 @@ public class MemberServiceImpl implements MemberService {
 		this.memberDAO.InsertSignUpForm(signVO);
 	}
 	
+	public MemberVO selectLoginPasswordForm(MemberVO memberPVO)
+	{
+		return this.memberDAO.selectLoginPasswordForm(memberPVO);
+	}
+	
 }
 

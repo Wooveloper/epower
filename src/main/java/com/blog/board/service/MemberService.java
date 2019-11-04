@@ -13,5 +13,5 @@ public interface MemberService {
 	
 	public void InsertSignUpForm(MemberVO signVO);
 	
-	
+	public MemberVO selectLoginPasswordForm(MemberVO memberPVO);
 }

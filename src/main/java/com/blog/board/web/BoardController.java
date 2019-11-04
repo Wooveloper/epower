@@ -83,17 +83,17 @@ public class BoardController {
 	//시부랄거
 	@RequestMapping(value="/SelectBoardDetailForm.do")
 	public String SelectBoardDetailForm(Model model,@ModelAttribute("deviceVO") DeviceVO deviceVO){	
-	System.out.println("gajyom = " + deviceVO.device_no());
+	System.out.println("lalala :" + deviceVO.getdevice_no());
 	Map<String,Object> paramMap = new HashMap<String,Object>();
 	paramMap.put("deviceVO", deviceVO);
-	System.out.println("gagagagaga : " + paramMap);	
+	System.out.println("udiro?BoardDetailForm : " + paramMap);	
 	List<Map<String,Object>> listMap = boardService.SelectBoardDetailForm(paramMap);
-	//String o = listMap.get;
-	
 	model.addAttribute("listMap", listMap);
 	
 	return "board/boarddetail";
 	}
+	
+	
 
 	//수정
 	@RequestMapping(value="/UpdateBoardDetailView.do")
@@ -104,10 +104,10 @@ public class BoardController {
 	//device_no 이동 상세페이지 ->수정
 	@RequestMapping(value="/SelectDetailForm.do")
 	public String SelectDetailForm(Model model,@ModelAttribute("deviceVO") DeviceVO deviceVO){
-	System.out.println("why = " + deviceVO.device_no());
+	System.out.println("udiro?DetailForm : " + deviceVO.getdevice_no());	
 	Map<String,Object> paramMap = new HashMap<String,Object>();
 	paramMap.put("deviceVO", deviceVO);
-	System.out.println("gagagagaga : " + paramMap);	
+	System.out.println("udiro?DetailForm : " + paramMap);	
 	List<Map<String,Object>> listMap = boardService.SelectBoardDetailForm(paramMap);
 	model.addAttribute("listMap", listMap);
 	return "board/boarddetailedit";
@@ -116,27 +116,24 @@ public class BoardController {
 	//상세페이지 수정
 	@RequestMapping(value="/UpdateDetailForm.do")
 	public String UpdateDetailForm(Model model,@ModelAttribute("deviceVO") DeviceVO deviceVO){
-		System.out.println("test1 = " + deviceVO.device_which());
-		System.out.println("test2 = " + deviceVO.device_no());
-		System.out.println("test3 = " + deviceVO.device_modelname());
-		System.out.println("test4 = " + deviceVO.device_specification());
-		System.out.println("test5 = " + deviceVO.device_buydate());
-		System.out.println("test6 = " + deviceVO.device_manager());
-		System.out.println("test7 = " + deviceVO.device_user());			
-		System.out.println("test8 = " + deviceVO.device_state());
-		System.out.println("test9 = " + deviceVO.device_etc());
+	System.out.println("no : "+deviceVO.device_no());
 	Map<String,Object> paramMap = new HashMap<String,Object>();
 	paramMap.put("deviceVO", deviceVO);
-	boardService.UpdateDetailForm(paramMap);
+	List<Map<String,Object>> listMap = boardService.UpdateDetailForm(paramMap);	
+	model.addAttribute("listMap", listMap);
+	return "redirect:/SelectBoardDetailForm.do?device_no="+deviceVO.device_no();
+	
+	}
+
+	
+	//상세페이지 삭제
+	@RequestMapping(value="/DeleteDetailForm.do")
+	public String DeleteDetailForm(Model model,@ModelAttribute("deviceVO") DeviceVO deviceVO){
+	System.out.println("test2 = " + deviceVO.device_no());
+	Map<String,Object> paramMap = new HashMap<String,Object>();
+	paramMap.put("deviceVO", deviceVO);
+	boardService.DeleteDetailForm(paramMap);
 	return "redirect:/Main.do";
 	}
-    /*@RequestMapping(value="/board/boardUpdate", method=RequestMethod.POST)
-    public ModelAndView boardUpdatePOST(CommandMap commandMap) throws Exception {
-        
-        ModelAndView mv = new ModelAndView("redirect:/board/boardDetail");
-        mv.addObject("idx", commandMap.get("IDX"));
-        boardServcie.updateBoard(commandMap.getMap());
-        return mv;
-    }*/
 
 }

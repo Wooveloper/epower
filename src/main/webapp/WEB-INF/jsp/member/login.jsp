@@ -39,14 +39,6 @@
               <label for="inputPassword">Password</label>
             </div>
           </div>
-          <div class="form-group">
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="remember-me">
-                Remember Password
-              </label>
-            </div>
-          </div>
           <input type="botton" class="btn btn-primary form-control" id="btn_login" name="btn_login" value="Login" onclick="login()">
         </form>
         <div class="text-center">
@@ -69,9 +61,11 @@
 		if($("#inputId").val() == null || $("#inputId").val() == ""){
 			alert("아이디를 입력해주세요!");
 			return;
-		} else {
-			location.href="/selectLoginForm.do?member_id="+$("#inputId").val()+"&member_password="+$("#inputPassword").val();	
 		}
+			else{
+			location.href="/selectLoginForm.do?member_id="+$("#inputId").val()+"&member_password="+$("#inputPassword").val();	
+
+			}
 	}
 </script>
 </body>

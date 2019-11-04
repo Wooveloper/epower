@@ -29,22 +29,9 @@
 			<button class="navbar-toggle" type="button" data-toggle="collapse" date-target="#navbar-main">
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Blog</a>
+			<a class="navbar-brand" href="/Main.do">Blog</a>
 		</div>
-		
-		<center>
-			<div class="navbar-collapse collapse" id="navbar-main">
-				<form class="navbar-form navbar-right" rol="search" action="">
-					<div class="form-group">
-						<input type="text" class="form-control" id="member_id" name="member_id" placeholder="Username">
-					</div>
-					<div class="form-group">
-						<input type="password" class="form-control" id="member_password" name="member_password" placeholder="Password">
-					</div>
-					<input type="submit" class="btn btn-primary form-control" value="로그인" id="btn_login" name="btn_login"></button>
-				</form>
-			</div>
-		</center>
+
 	</div>
         <form class="form-inline" id="frmSearch" >
             <div align="center">
@@ -58,8 +45,9 @@
 					<th style="test-align:center;">구매일</th>
 					<th style="test-align:center;">사용자</th>
 					<th style="test-align:center;">자산상태</th>
-					<th style="test-align:center;">PK넘버</th>
 				</tr>			
+			<c:choose>
+			<c:when test="${fn:length(listMap) > 0}">
 				 <c:forEach items="${listMap}" var="result" varStatus="status">
                   	<tr>
                     	<td>${result.DeviceVO.device_which}</td>
@@ -67,10 +55,18 @@
                     	<td>${result.DeviceVO.device_specification}</td>
                     	<td>${result.DeviceVO.device_buydate}</td>
                     	<td>${result.DeviceVO.device_user}</td>
-                    	<td>${result.DeviceVO.device_state}</td>  
-                    	<td>${result.DeviceVO.device_no}</td>           
+                    	<td>${result.DeviceVO.device_state}</td>            
                   	</tr>	
                   </c:forEach>
+                  </c:when>
+                  <c:otherwise>
+				<tr>
+					<td colspan="4">조회된 결과가 없습니다.</td>
+				</tr>
+				</c:otherwise>
+			</c:choose>
+			</thead>
+			</table>
 		</table>
 		<hr/>
 		<div class="text-center">
